@@ -1,5 +1,5 @@
 using System.Linq;
-
+#nullable disable
 
 namespace Cinema_Plus;
 
@@ -29,7 +29,7 @@ public partial class CinemaPlus : Form
             {
                 MovieDesign movieDesign = new MovieDesign();
                 movieDesign.MovieNameLbl.Text = moviename;
-                string jsonStr = httpClient.GetStringAsync($"{_url}t={moviename}&apikey={_apiKey}").Result; //i = tt3896198 & apikey = 16be0e6e
+                string jsonStr = httpClient.GetStringAsync($"{_url}t={moviename}&apikey={_apiKey}").Result;
                 await Task.Delay(10);
                 var movie = System.Text.Json.JsonSerializer.Deserialize<Movie>(jsonStr);
                 movieDesign.pictureBox1.Load(movie?.Poster);
