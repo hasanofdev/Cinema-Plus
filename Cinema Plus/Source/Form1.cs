@@ -17,7 +17,7 @@ public partial class CinemaPlus : Form
     private async void CinemaPlus_LoadAsync(object sender, EventArgs e)
     {
         using HttpClient httpClient = new();
-        using FileStream fs = new FileStream("MoviesNames.json", FileMode.Open);
+        using FileStream fs = new FileStream(@"..\..\..\Properties\MoviesNames.json", FileMode.Open);
         MovieNameList = System.Text.Json.JsonSerializer.Deserialize<List<string>>(fs);
         Random rnd = new Random();
         MovieNameList.OrderBy(x => rnd.Next());
