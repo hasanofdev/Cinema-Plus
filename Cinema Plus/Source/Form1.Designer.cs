@@ -49,8 +49,8 @@ partial class CinemaPlus
             this.ServicesBtn = new System.Windows.Forms.Button();
             this.DolbyAtmosBtn = new System.Windows.Forms.Button();
             this.MainLayout = new System.Windows.Forms.FlowLayoutPanel();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.LogoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.NavigationBar2.SuspendLayout();
@@ -345,26 +345,18 @@ partial class CinemaPlus
             this.MainLayout.Size = new System.Drawing.Size(1356, 495);
             this.MainLayout.TabIndex = 3;
             // 
-            // progressBar1
-            // 
-            this.progressBar1.AccessibleName = "";
-            this.progressBar1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.progressBar1.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.progressBar1.ForeColor = System.Drawing.SystemColors.Control;
-            this.progressBar1.Location = new System.Drawing.Point(0, 569);
-            this.progressBar1.Maximum = 30;
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.progressBar1.Size = new System.Drawing.Size(1356, 36);
-            this.progressBar1.Step = 1;
-            this.progressBar1.TabIndex = 3;
-            this.progressBar1.Value = 1;
-            // 
             // timer1
             // 
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.progressBar1.Location = new System.Drawing.Point(0, 579);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(1356, 26);
+            this.progressBar1.TabIndex = 3;
             // 
             // CinemaPlus
             // 
@@ -373,10 +365,12 @@ partial class CinemaPlus
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(50)))), ((int)(((byte)(82)))));
             this.ClientSize = new System.Drawing.Size(1356, 605);
             this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.MainLayout);
             this.Controls.Add(this.LogoPanel);
             this.Controls.Add(this.NavigationBar2);
             this.Controls.Add(this.NavigationBar1);
             this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.Enabled = false;
             this.MinimumSize = new System.Drawing.Size(1364, 644);
             this.Name = "CinemaPlus";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -417,6 +411,6 @@ partial class CinemaPlus
     private FlowLayoutPanel MainLayout;
     private Button SearchBtn;
     private TextBox SearchBox;
-    private ProgressBar progressBar1;
     private System.Windows.Forms.Timer timer1;
+    private ProgressBar progressBar1;
 }

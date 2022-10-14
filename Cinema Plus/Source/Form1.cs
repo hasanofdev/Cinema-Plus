@@ -1,4 +1,4 @@
-
+using System.Linq;
 
 
 namespace Cinema_Plus;
@@ -19,6 +19,8 @@ public partial class CinemaPlus : Form
         using HttpClient httpClient = new();
         using FileStream fs = new FileStream("MoviesNames.json", FileMode.Open);
         MovieNameList = System.Text.Json.JsonSerializer.Deserialize<List<string>>(fs);
+        Random rnd = new Random();
+        MovieNameList.OrderBy(x => rnd.Next());
 
         for (int i = 0; i < 20; i++)
         {
@@ -76,8 +78,8 @@ public partial class CinemaPlus : Form
             timer1.Enabled = false;
             timer1.Dispose();
             progressBar1.Dispose();
-            this.Controls.Add(this.MainLayout);
             Cursor = DefaultCursor;
+            Enabled = true;
         }
     }
 }
