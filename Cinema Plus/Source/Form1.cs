@@ -8,10 +8,7 @@ public partial class CinemaPlus : Form
     List<string> MovieNameList;
     const string _apiKey = "16be0e6e";
     const string _url = $"http://www.omdbapi.com/?";
-    public CinemaPlus()
-    {
-        InitializeComponent();
-    }
+    public CinemaPlus() => InitializeComponent();
 
     private void PlatinumBtn_MouseHover(object sender, EventArgs e) => (sender as Button)!.ForeColor = Color.Black;
 
@@ -68,6 +65,19 @@ public partial class CinemaPlus : Form
 
             CinemaPlus_LoadAsync(sender, e);
             return;
+        }
+    }
+
+    private void timer1_Tick(object sender, EventArgs e)
+    {
+        progressBar1.PerformStep();
+        if(progressBar1.Value == progressBar1.Maximum)
+        {
+            timer1.Enabled = false;
+            timer1.Dispose();
+            progressBar1.Dispose();
+            this.Controls.Add(this.MainLayout);
+            Cursor = DefaultCursor;
         }
     }
 }
