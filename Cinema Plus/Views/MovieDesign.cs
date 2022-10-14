@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Cinema_Plus.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -29,6 +32,16 @@ public partial class MovieDesign : UserControl
         {
             label.Font = new System.Drawing.Font("Segoe UI", 14.25F - (label.Text.Length - 17), System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
         }
+
+    }
+
+    private void MovieDesign_Click(object sender, EventArgs e)
+    {
+        System.Windows.Forms.Label label =  (sender as Control).Tag as Label;
+        HttpClient client = new();
+        MovieDetails movieDetails = new MovieDetails(System.Text.Json.JsonSerializer.Deserialize<Movie>(client.GetStringAsync($"http://www.omdbapi.com/?t={label.Text}&apikey=16be0e6e").Result));
+        DialogResult result =  movieDetails.ShowDialog();
+
 
     }
 }

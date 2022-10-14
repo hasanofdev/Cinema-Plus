@@ -42,19 +42,22 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Tag =this.MovieNameLbl;
+            this.pictureBox1.Click += new System.EventHandler(this.MovieDesign_Click);
             this.pictureBox1.MouseEnter += new System.EventHandler(this.MovieDesign_MouseEnter);
             this.pictureBox1.MouseLeave += new System.EventHandler(this.MovieDesign_MouseLeave);
             // 
             // MovieNameLbl
             // 
             this.MovieNameLbl.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.MovieNameLbl.Location = new System.Drawing.Point(-1, 0);
+            this.MovieNameLbl.Location = new System.Drawing.Point(39, 0);
             this.MovieNameLbl.Name = "MovieNameLbl";
-            this.MovieNameLbl.Size = new System.Drawing.Size(263, 61);
+            this.MovieNameLbl.Size = new System.Drawing.Size(194, 61);
             this.MovieNameLbl.TabIndex = 1;
-            this.MovieNameLbl.Text = "Movie Name";
+            this.MovieNameLbl.Tag = MovieNameLbl;
+            this.MovieNameLbl.Text = "MovieName";
             this.MovieNameLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.MovieNameLbl.TextChanged += new System.EventHandler(this.MovieNameLbl_TextChanged);
+            this.MovieNameLbl.Click += new System.EventHandler(this.MovieDesign_Click);
             this.MovieNameLbl.MouseEnter += new System.EventHandler(this.MovieDesign_MouseEnter);
             this.MovieNameLbl.MouseLeave += new System.EventHandler(this.MovieDesign_MouseLeave);
             // 
@@ -68,6 +71,8 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "MovieDesign";
             this.Size = new System.Drawing.Size(263, 433);
+            this.Tag = MovieNameLbl;
+            this.Click += new System.EventHandler(this.MovieDesign_Click);
             this.MouseEnter += new System.EventHandler(this.MovieDesign_MouseEnter);
             this.MouseLeave += new System.EventHandler(this.MovieDesign_MouseLeave);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

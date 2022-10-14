@@ -31,9 +31,8 @@ partial class CinemaPlus
             this.LogoPanel = new System.Windows.Forms.Panel();
             this.Logo = new System.Windows.Forms.PictureBox();
             this.NavigationBar2 = new System.Windows.Forms.Panel();
-            this.Icon119 = new System.Windows.Forms.PictureBox();
-            this.PhoneNumber = new System.Windows.Forms.Label();
-            this.PhoneIcon = new System.Windows.Forms.PictureBox();
+            this.SearchBtn = new System.Windows.Forms.Button();
+            this.SearchBox = new System.Windows.Forms.TextBox();
             this.CineBonusBtn = new System.Windows.Forms.Button();
             this.TariffsBtn = new System.Windows.Forms.Button();
             this.ActionsBtn = new System.Windows.Forms.Button();
@@ -52,8 +51,6 @@ partial class CinemaPlus
             this.LogoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.NavigationBar2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Icon119)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PhoneIcon)).BeginInit();
             this.NavigationBar1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -81,9 +78,8 @@ partial class CinemaPlus
             // NavigationBar2
             // 
             this.NavigationBar2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(172)))), ((int)(((byte)(236)))));
-            this.NavigationBar2.Controls.Add(this.Icon119);
-            this.NavigationBar2.Controls.Add(this.PhoneNumber);
-            this.NavigationBar2.Controls.Add(this.PhoneIcon);
+            this.NavigationBar2.Controls.Add(this.SearchBtn);
+            this.NavigationBar2.Controls.Add(this.SearchBox);
             this.NavigationBar2.Controls.Add(this.CineBonusBtn);
             this.NavigationBar2.Controls.Add(this.TariffsBtn);
             this.NavigationBar2.Controls.Add(this.ActionsBtn);
@@ -94,37 +90,26 @@ partial class CinemaPlus
             this.NavigationBar2.Size = new System.Drawing.Size(1356, 54);
             this.NavigationBar2.TabIndex = 1;
             // 
-            // Icon119
+            // SearchBtn
             // 
-            this.Icon119.Image = global::Cinema_Plus.Properties.Resources._119Icon;
-            this.Icon119.Location = new System.Drawing.Point(1282, 6);
-            this.Icon119.Name = "Icon119";
-            this.Icon119.Size = new System.Drawing.Size(38, 43);
-            this.Icon119.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Icon119.TabIndex = 3;
-            this.Icon119.TabStop = false;
+            this.SearchBtn.BackgroundImage = global::Cinema_Plus.Properties.Resources.searchIcon;
+            this.SearchBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.SearchBtn.Location = new System.Drawing.Point(1306, 16);
+            this.SearchBtn.Name = "SearchBtn";
+            this.SearchBtn.Size = new System.Drawing.Size(28, 29);
+            this.SearchBtn.TabIndex = 5;
+            this.SearchBtn.Tag = this.SearchBox;
+            this.SearchBtn.UseVisualStyleBackColor = true;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
-            // PhoneNumber
+            // SearchBox
             // 
-            this.PhoneNumber.AutoSize = true;
-            this.PhoneNumber.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.PhoneNumber.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.PhoneNumber.ForeColor = System.Drawing.Color.Snow;
-            this.PhoneNumber.Location = new System.Drawing.Point(1139, 17);
-            this.PhoneNumber.Name = "PhoneNumber";
-            this.PhoneNumber.Size = new System.Drawing.Size(131, 20);
-            this.PhoneNumber.TabIndex = 4;
-            this.PhoneNumber.Text = "+99412 499 89 88 ";
-            // 
-            // PhoneIcon
-            // 
-            this.PhoneIcon.Image = global::Cinema_Plus.Properties.Resources.PhoneIcon;
-            this.PhoneIcon.Location = new System.Drawing.Point(1116, 17);
-            this.PhoneIcon.Name = "PhoneIcon";
-            this.PhoneIcon.Size = new System.Drawing.Size(17, 20);
-            this.PhoneIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PhoneIcon.TabIndex = 3;
-            this.PhoneIcon.TabStop = false;
+            this.SearchBox.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.SearchBox.Location = new System.Drawing.Point(1116, 16);
+            this.SearchBox.Name = "SearchBox";
+            this.SearchBox.PlaceholderText = "Search";
+            this.SearchBox.Size = new System.Drawing.Size(184, 29);
+            this.SearchBox.TabIndex = 4;
             // 
             // CineBonusBtn
             // 
@@ -366,19 +351,17 @@ partial class CinemaPlus
             this.Controls.Add(this.LogoPanel);
             this.Controls.Add(this.NavigationBar2);
             this.Controls.Add(this.NavigationBar1);
-            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1364, 644);
             this.Name = "CinemaPlus";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Tag = this.SearchBox;
             this.Text = "Cinema Plus";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.CinemaPlus_Load);
+            this.Load += new System.EventHandler(this.CinemaPlus_LoadAsync);
             this.LogoPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.NavigationBar2.ResumeLayout(false);
             this.NavigationBar2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Icon119)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PhoneIcon)).EndInit();
             this.NavigationBar1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -396,9 +379,6 @@ partial class CinemaPlus
     private Button ActionsBtn;
     private Button CineBonusBtn;
     private Button TariffsBtn;
-    private Label PhoneNumber;
-    private PictureBox PhoneIcon;
-    private PictureBox Icon119;
     private Button PlatinumBtn;
     private Button AboutUsBtn;
     private Button ServicesBtn;
@@ -409,4 +389,6 @@ partial class CinemaPlus
     private Button EnBtn;
     private Button AzBtn;
     private FlowLayoutPanel MainLayout;
+    private Button SearchBtn;
+    private TextBox SearchBox;
 }
